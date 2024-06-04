@@ -1,8 +1,8 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
-	// This matches everything except /sign-in and /sign-up
-	/^((?!\/sign-in|\/sign-up).)*$/,
+	// This matches everything except /sign-in, /sign-up, and /api/uploadthing
+	/^((?!\/sign-in|\/sign-up|\/api\/uploadthing).)*$/,
 ]);
 
 export default clerkMiddleware((auth, req) => {
