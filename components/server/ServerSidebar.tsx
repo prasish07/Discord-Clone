@@ -18,6 +18,8 @@ const ServerSidebar = async (props: ServerSidebarProps) => {
 		return redirect("/");
 	}
 
+	// return <div>hello</div>;
+
 	const server = await db.server.findUnique({
 		where: {
 			id: serverId,

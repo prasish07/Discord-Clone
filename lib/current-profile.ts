@@ -15,5 +15,9 @@ export const currentProfile = async () => {
 		},
 	});
 
+	if (!profile) {
+		return null;
+	}
+
 	return profile;
 };
