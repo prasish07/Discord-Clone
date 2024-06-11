@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import qs from "query-string";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -50,9 +50,10 @@ const formSchema = z.object({
 });
 
 const CreateChannelModal = () => {
-	const { isOpen, onClose, type } = useModal();
+	const { isOpen, onClose, type, data } = useModal();
 
 	const isModalOpen = isOpen && type == "createChannel";
+	const { channelType } = data;
 
 	const router = useRouter();
 	const params = useParams();
@@ -61,9 +62,17 @@ const CreateChannelModal = () => {
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: "",
-			type: ChannelType.TEXT,
+			type: channelType || ChannelType.TEXT,
 		},
 	});
+
+	useEffect(() => {
+		if (channelType) {
+			form.setValue("type", channelType);
+		} else {
+			form.setValue("type", ChannelType.TEXT);
+		}
+	}, [channelType, form]);
 
 	const isLoading = form.formState.isSubmitting;
 
