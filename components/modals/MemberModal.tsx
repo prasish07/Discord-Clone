@@ -99,8 +99,6 @@ const MemberModal = () => {
 		}
 	};
 
-	console.log(server?.members);
-
 	return (
 		<Dialog open={isModalOpen} onOpenChange={onClose}>
 			<DialogContent className="bg-white text-black overflow-hidden">
