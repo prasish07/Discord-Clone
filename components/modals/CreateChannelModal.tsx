@@ -81,7 +81,7 @@ const CreateChannelModal = () => {
 			const url = qs.stringifyUrl({
 				url: "/api/channel",
 				query: {
-					serverId: params.serverId,
+					serverId: params?.serverId ?? "",
 				},
 			});
 
